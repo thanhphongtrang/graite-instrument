@@ -1,0 +1,8 @@
+# Empirical data boundary — guarded at the git layer from the first commit
+/empirical/
+*.transcript
+
+node_modules/
+dist/
+.DS_Store
+*.local
