@@ -77,6 +77,7 @@ function ConsentGate({ onAccept }: { onAccept: () => void }) {
 
 function Workbench() {
   const [sections, setSections] = useState<Section[]>(DEFAULT_SECTIONS)
+  const [ended, setEnded] = useState(false)
   // Provenance spans live in a ref, not state: they are never rendered, and
   // logging inside a state updater would double-fire under StrictMode
   // (verified bug, 2026-07-11) — events must be logged exactly once.
@@ -93,25 +94,29 @@ function Workbench() {
     })
   }
 
-  // Post-acceptance provenance heuristic (v0 — see design.md §3):
+  // Post-acceptance provenance heuristic (v0.2 — see design.md §3).
+  // Three-way, after SIM-A's rehearsal dispute of the binary coding
+  // ("I kept the machine's skeleton and replaced its flesh — that is not
+  // removal"): modified (light rework) / transformed (skeleton kept, flesh
+  // replaced) / removed (nothing retained). Thresholds are v0.2-draft values
+  // to co-design with supervisors; every event carries the similarity so
+  // recoding later is possible without recollection.
   const checkProvenance = (section: Section) => {
+    const rank = { intact: 0, modified: 1, transformed: 2, removed: 3 } as const
     spansRef.current = spansRef.current.map((span) => {
       if (span.section_id !== section.id || span.status === 'removed') return span
       if (section.content.includes(span.text)) return span
       const sim = similarity(span.text, section.content)
-      if (sim >= 0.3 && span.status === 'intact') {
-        trace.log('ai_text_modified_post_acceptance', {
-          suggestion_id: span.suggestion_id,
-          section_id: section.id,
-          similarity: Number(sim.toFixed(3)),
-        })
-        return { ...span, status: 'modified' as const }
-      }
-      if (sim < 0.3) {
-        trace.log('ai_text_removed', { suggestion_id: span.suggestion_id, section_id: section.id })
-        return { ...span, status: 'removed' as const }
-      }
-      return span
+      const next: keyof typeof rank = sim >= 0.6 ? 'modified' : sim >= 0.15 ? 'transformed' : 'removed'
+      if (rank[next] <= rank[span.status]) return span
+      const eventType =
+        next === 'modified' ? 'ai_text_modified_post_acceptance' : next === 'transformed' ? 'ai_text_transformed' : 'ai_text_removed'
+      trace.log(eventType, {
+        suggestion_id: span.suggestion_id,
+        section_id: section.id,
+        similarity: Number(sim.toFixed(3)),
+      })
+      return { ...span, status: next }
     })
   }
 
@@ -139,6 +144,34 @@ function Workbench() {
     )
   }
 
+  if (ended) {
+    return (
+      <div className="consent-wrap">
+        <main className="consent-card">
+          <h1>Session ended</h1>
+          <p>
+            Thank you. Your trace ({events.length} events) is bounded by an explicit end marker and stays in this
+            browser until you export or wipe it.
+          </p>
+          <div className="sug-actions">
+            <button className="primary" onClick={() => downloadJSON(`trace-${trace.session_id.slice(0, 8)}.json`, trace.exportJSON())}>
+              Export trace (JSON)
+            </button>
+            <button
+              className="danger"
+              onClick={() => {
+                trace.wipe()
+                setWiped(true)
+              }}
+            >
+              Withdraw &amp; wipe
+            </button>
+          </div>
+        </main>
+      </div>
+    )
+  }
+
   return (
     <div className="app">
       <header className="topbar">
@@ -153,6 +186,14 @@ function Workbench() {
           </span>
           <button onClick={() => downloadJSON(`trace-${trace.session_id.slice(0, 8)}.json`, trace.exportJSON())}>
             Export trace (JSON)
+          </button>
+          <button
+            onClick={() => {
+              trace.log('session_end', { ended_by: 'participant', total_events: events.length + 1 })
+              setEnded(true)
+            }}
+          >
+            End session
           </button>
           <button
             className="danger"
@@ -201,11 +242,12 @@ function Workbench() {
               insertIntoSection(sectionId, edited)
               spansRef.current = [...spansRef.current, { suggestion_id: sug.suggestion_id, section_id: sectionId, text: edited, status: 'intact' }]
             }}
-            onReject={(sug, requestId, reason) => {
+            onReject={(sug, requestId, reason, reasonText) => {
               trace.log('suggestion_rejected', {
                 suggestion_id: sug.suggestion_id,
                 request_id: requestId,
                 reason_tag: reason ?? null,
+                reason_text: reasonText || null,
               })
             }}
           />
@@ -226,6 +268,11 @@ function Editor({
   onManualEdit: (section: Section, before: string, after: string) => void
 }) {
   const beforeRef = useRef<Record<string, string>>({})
+  // Inline recall-note editor (v0.2): replaces the single-line native prompt —
+  // rehearsal showed the markers doing real interpretive work, so they get a
+  // real writing surface.
+  const [flagFor, setFlagFor] = useState<string | null>(null)
+  const [flagNote, setFlagNote] = useState('')
   return (
     <main className="editor" aria-label="Course material editor">
       <h1 className="doc-title">Course material — working draft</h1>
@@ -249,9 +296,10 @@ function Editor({
               <button
                 className="ghost"
                 title="Flag this moment for the recall interview"
+                aria-expanded={flagFor === s.id}
                 onClick={() => {
-                  const note = window.prompt('Optional note for your recall interview (leave empty to just flag):') ?? undefined
-                  trace.log('recall_marker', { note: note || null, section_id: s.id })
+                  setFlagFor(flagFor === s.id ? null : s.id)
+                  setFlagNote('')
                 }}
               >
                 ⚑ Flag moment
@@ -269,6 +317,32 @@ function Editor({
               </button>
             </div>
           </div>
+          {flagFor === s.id && (
+            <div className="flag-editor">
+              <label htmlFor={`flag-${s.id}`}>What just happened here that we should revisit in the recall interview?</label>
+              <textarea
+                id={`flag-${s.id}`}
+                value={flagNote}
+                onChange={(e) => setFlagNote(e.target.value)}
+                placeholder="A note to your future self — as much or little as you want. Leave empty to just flag."
+              />
+              <div className="sug-actions">
+                <button
+                  className="primary"
+                  onClick={() => {
+                    trace.log('recall_marker', { note: flagNote.trim() || null, section_id: s.id })
+                    setFlagFor(null)
+                    setFlagNote('')
+                  }}
+                >
+                  Save flag
+                </button>
+                <button className="ghost" onClick={() => setFlagFor(null)}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
           <textarea
             aria-label={`Content of section ${s.title}`}
             value={s.content}
@@ -305,7 +379,7 @@ function AIPanel({
   sections: Section[]
   onAccept: (s: Suggestion, sectionId: string, requestId: string) => void
   onEditedInsert: (s: Suggestion, edited: string, sectionId: string) => void
-  onReject: (s: Suggestion, requestId: string, reason?: string) => void
+  onReject: (s: Suggestion, requestId: string, reason?: string, reasonText?: string) => void
 }) {
   const [prompt, setPrompt] = useState('')
   const [target, setTarget] = useState(sections[0]?.id ?? '')
@@ -314,6 +388,9 @@ function AIPanel({
   const [decided, setDecided] = useState<Record<string, 'accepted' | 'rejected' | 'edited'>>({})
   const [editing, setEditing] = useState<Record<string, string>>({})
   const [rejecting, setRejecting] = useState<string | null>(null)
+  const [rejectTag, setRejectTag] = useState<string | null>(null)
+  const [rejectText, setRejectText] = useState('')
+  const requestCountRef = useRef(0)
 
   const targetSection = useMemo(() => sections.find((s) => s.id === target) ?? sections[0], [sections, target])
 
@@ -321,8 +398,13 @@ function AIPanel({
     if (!targetSection || busy) return
     setBusy(true)
     const requestId = crypto.randomUUID()
+    // request_index lets analysis mark first-cycle latencies as
+    // orientation-confounded (rehearsal finding: SIM-B's longest "deliberation"
+    // was interface orientation).
+    const requestIndex = ++requestCountRef.current
     trace.log('prompt_submitted', {
       request_id: requestId,
+      request_index: requestIndex,
       prompt_text: prompt,
       target_section_id: targetSection.id,
       chars: prompt.length,
@@ -335,7 +417,8 @@ function AIPanel({
     })
     trace.log('suggestions_shown', {
       request_id: requestId,
-      suggestions: suggestions.map((s) => ({ suggestion_id: s.suggestion_id, content: s.content })),
+      request_index: requestIndex,
+      suggestions: suggestions.map((s) => ({ suggestion_id: s.suggestion_id, content: s.content, note: s.note ?? null })),
       model: `${provider.name}/${provider.model}@${provider.version}`,
       latency_ms: Math.round(performance.now() - t0),
     })
@@ -343,6 +426,8 @@ function AIPanel({
     setDecided({})
     setEditing({})
     setRejecting(null)
+    setRejectTag(null)
+    setRejectText('')
     setBusy(false)
   }
 
@@ -411,34 +496,54 @@ function AIPanel({
                 ) : (
                   <>
                     <p>{sug.content}</p>
+                    {sug.note && <p className="sug-note">{sug.note}</p>}
                     {state ? (
                       <p className="sug-state">{state === 'accepted' ? '✓ accepted' : state === 'edited' ? '✎ edited & inserted' : '✕ rejected'}</p>
                     ) : rejecting === sug.suggestion_id ? (
-                      <div className="sug-actions reject-reasons" role="group" aria-label="Why are you rejecting this?">
-                        <span>Why? (optional)</span>
-                        {REJECT_REASONS.map((r) => (
+                      <div className="reject-reasons" role="group" aria-label="Why are you rejecting this?">
+                        <span>Why? Pick a tag and/or say it in your own words (both optional):</span>
+                        <div className="sug-actions">
+                          {REJECT_REASONS.map((r) => (
+                            <button
+                              key={r}
+                              className={rejectTag === r ? 'tag-selected' : 'ghost'}
+                              aria-pressed={rejectTag === r}
+                              onClick={() => setRejectTag(rejectTag === r ? null : r)}
+                            >
+                              {r}
+                            </button>
+                          ))}
+                        </div>
+                        <textarea
+                          aria-label="In your own words, why are you rejecting this? (optional)"
+                          placeholder="In your own words… (optional, but this is the part that matters)"
+                          value={rejectText}
+                          onChange={(e) => setRejectText(e.target.value)}
+                        />
+                        <div className="sug-actions">
                           <button
-                            key={r}
-                            className="ghost"
+                            className="primary"
                             onClick={() => {
-                              onReject(sug, batch.requestId, r)
+                              onReject(sug, batch.requestId, rejectTag ?? undefined, rejectText.trim() || undefined)
                               setDecided((p) => ({ ...p, [sug.suggestion_id]: 'rejected' }))
                               setRejecting(null)
+                              setRejectTag(null)
+                              setRejectText('')
                             }}
                           >
-                            {r}
+                            Confirm reject
                           </button>
-                        ))}
-                        <button
-                          className="ghost"
-                          onClick={() => {
-                            onReject(sug, batch.requestId)
-                            setDecided((p) => ({ ...p, [sug.suggestion_id]: 'rejected' }))
-                            setRejecting(null)
-                          }}
-                        >
-                          Skip reason
-                        </button>
+                          <button
+                            className="ghost"
+                            onClick={() => {
+                              setRejecting(null)
+                              setRejectTag(null)
+                              setRejectText('')
+                            }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
                       </div>
                     ) : (
                       <div className="sug-actions">
@@ -480,6 +585,7 @@ const EVENT_LABELS: Record<string, string> = {
   suggestion_rejected: 'You rejected a suggestion',
   manual_edit: 'You edited the document',
   ai_text_modified_post_acceptance: 'You reworked accepted AI text',
+  ai_text_transformed: 'You transformed accepted AI text (kept its skeleton)',
   ai_text_removed: 'You removed accepted AI text',
   recall_marker: '⚑ You flagged a moment',
   artifact_snapshot: 'Document snapshot',
@@ -499,6 +605,7 @@ function TraceMirror({ events, sections }: { events: TraceEvent[]; sections: Sec
         <span className="chip">✓ {count('suggestion_accepted')} accepted</span>
         <span className="chip">✎ {count('suggestion_edited_then_inserted')} edited</span>
         <span className="chip">✕ {count('suggestion_rejected')} rejected</span>
+        <span className="chip">⟳ {count('ai_text_transformed')} transformed</span>
         <span className="chip">↩ {count('ai_text_removed')} overridden</span>
         <span className="chip">⚑ {count('recall_marker')} flagged</span>
       </div>

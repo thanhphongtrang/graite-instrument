@@ -1,0 +1,618 @@
+{
+  "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+  "events": [
+    {
+      "event_id": "d993c97a-12b4-43aa-8717-bd65cac093dd",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 1,
+      "at": "2026-07-12T06:31:58.927Z",
+      "type": "session_start",
+      "data": {
+        "schema_version": "0.1-draft",
+        "app_version": "0.1.0-boundary-object",
+        "participant_code": "DEMO-01",
+        "provider": {
+          "name": "simulated",
+          "model": "scripted-pool",
+          "version": "0.1"
+        },
+        "consent_ack": true
+      }
+    },
+    {
+      "event_id": "10259bcb-d94b-41c2-b505-6b4a12015e98",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 2,
+      "at": "2026-07-12T06:32:33.175Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "4dc584f5-0c9a-4058-8666-1db548838dfb",
+        "prompt_text": "activities for a 45 min seminar on using AI critically in lesson planning",
+        "target_section_id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+        "chars": 73
+      }
+    },
+    {
+      "event_id": "79940866-2836-44c9-a897-228a245ea082",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 3,
+      "at": "2026-07-12T06:32:33.896Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "4dc584f5-0c9a-4058-8666-1db548838dfb",
+        "suggestions": [
+          {
+            "suggestion_id": "c2af007f-0ab6-4ac2-848e-89afca4aee12",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")"
+          },
+          {
+            "suggestion_id": "36ee3817-0545-4e0e-8f7e-3adc4a7b0b09",
+            "content": "Fishbowl discussion (30 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency."
+          },
+          {
+            "suggestion_id": "dc94f2c6-9f86-439c-95b7-237c242b55dd",
+            "content": "Deconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          }
+        ],
+        "model": "simulated/scripted-pool@0.1",
+        "latency_ms": 721
+      }
+    },
+    {
+      "event_id": "16ccadea-3c85-483d-8716-142aa78c320b",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 4,
+      "at": "2026-07-12T06:33:47.053Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "c2af007f-0ab6-4ac2-848e-89afca4aee12",
+        "request_id": "4dc584f5-0c9a-4058-8666-1db548838dfb",
+        "section_id": "a5df891b-8518-41f3-be26-ac68b37184ec"
+      }
+    },
+    {
+      "event_id": "adb98ca1-0dc5-49f0-b0d2-bd5149a5fc53",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 5,
+      "at": "2026-07-12T06:33:47.053Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 1,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": ""
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")"
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "edb842a3-d5fa-4240-a531-61cc30d89bae",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 6,
+      "at": "2026-07-12T06:34:15.070Z",
+      "type": "suggestion_edited_then_inserted",
+      "data": {
+        "suggestion_id": "36ee3817-0545-4e0e-8f7e-3adc4a7b0b09",
+        "section_id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+        "original": "Fishbowl discussion (30 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.",
+        "edited": "Fishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.",
+        "similarity": 0.946
+      }
+    },
+    {
+      "event_id": "0579aea1-249b-4b1f-976e-ec711e81b504",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 7,
+      "at": "2026-07-12T06:34:15.071Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 2,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": ""
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "766bdbc9-d42e-4a03-a1ad-56ef531aa061",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 8,
+      "at": "2026-07-12T06:34:19.964Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "dc94f2c6-9f86-439c-95b7-237c242b55dd",
+        "request_id": "4dc584f5-0c9a-4058-8666-1db548838dfb",
+        "section_id": "a5df891b-8518-41f3-be26-ac68b37184ec"
+      }
+    },
+    {
+      "event_id": "06f671df-6c8a-4bee-acc0-0c08454ce205",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 9,
+      "at": "2026-07-12T06:34:19.964Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 3,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": ""
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "6d71938b-d1f8-4e08-9877-8a5d23f94cb0",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 10,
+      "at": "2026-07-12T06:34:36.516Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "625f15ee-bba7-4e40-9865-25c49b13f6b9",
+        "prompt_text": "learning objectives for the same seminar",
+        "target_section_id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+        "chars": 40
+      }
+    },
+    {
+      "event_id": "b18b7472-57d7-46dc-b18f-99d1485c4f19",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 11,
+      "at": "2026-07-12T06:34:37.888Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "625f15ee-bba7-4e40-9865-25c49b13f6b9",
+        "suggestions": [
+          {
+            "suggestion_id": "3688c95a-9dd4-48f4-8c14-3d50a6d53758",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")"
+          },
+          {
+            "suggestion_id": "09ce4f64-92b4-492d-8e9f-6d36f87400ce",
+            "content": "Student teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area."
+          },
+          {
+            "suggestion_id": "bf8e4f88-84b0-4f0c-b93c-10e50670b3c8",
+            "content": "Student teachers can design a classroom activity in which pupils compare an AI explanation with a textbook explanation and identify the epistemic differences."
+          }
+        ],
+        "model": "simulated/scripted-pool@0.1",
+        "latency_ms": 1372
+      }
+    },
+    {
+      "event_id": "ae2478f8-7cd7-4071-80bc-7461a3ce6179",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 12,
+      "at": "2026-07-12T06:34:58.676Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "3688c95a-9dd4-48f4-8c14-3d50a6d53758",
+        "request_id": "625f15ee-bba7-4e40-9865-25c49b13f6b9",
+        "section_id": "88296439-e8c2-4b3e-b5d7-752f61e65086"
+      }
+    },
+    {
+      "event_id": "028827b4-77f0-420d-92d4-78390fa65b8f",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 13,
+      "at": "2026-07-12T06:34:58.677Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 4,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")"
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "7537bd3c-3b00-41b4-ba3c-936bcbb2b330",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 14,
+      "at": "2026-07-12T06:35:06.715Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "09ce4f64-92b4-492d-8e9f-6d36f87400ce",
+        "request_id": "625f15ee-bba7-4e40-9865-25c49b13f6b9",
+        "section_id": "88296439-e8c2-4b3e-b5d7-752f61e65086"
+      }
+    },
+    {
+      "event_id": "d1fbd301-8bfb-4802-a90d-c126a7fc218a",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 15,
+      "at": "2026-07-12T06:35:06.715Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 5,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area."
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "00d8879c-9e5c-49e1-ab87-438c6fd815c4",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 16,
+      "at": "2026-07-12T06:35:10.775Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "bf8e4f88-84b0-4f0c-b93c-10e50670b3c8",
+        "request_id": "625f15ee-bba7-4e40-9865-25c49b13f6b9",
+        "section_id": "88296439-e8c2-4b3e-b5d7-752f61e65086"
+      }
+    },
+    {
+      "event_id": "e34ea9f9-3997-412a-a1c0-1e2ac137487f",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 17,
+      "at": "2026-07-12T06:35:10.775Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 6,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\nStudent teachers can design a classroom activity in which pupils compare an AI explanation with a textbook explanation and identify the epistemic differences."
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "a644c721-2135-4c02-bf6b-db15567222de",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 18,
+      "at": "2026-07-12T06:35:38.914Z",
+      "type": "recall_marker",
+      "data": {
+        "note": "Took all three objectives in under a minute - they read better than what I'd write the night before. Only skimmed the third one. Is that a problem? Ask me later.",
+        "section_id": "88296439-e8c2-4b3e-b5d7-752f61e65086"
+      }
+    },
+    {
+      "event_id": "b251ff79-9202-452f-9c36-1ad5840ce004",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 19,
+      "at": "2026-07-12T06:36:09.262Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "fbb531e3-6d4f-496f-be14-9d3110fcc0b5",
+        "prompt_text": "readings for the students, nothing too long",
+        "target_section_id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+        "chars": 43
+      }
+    },
+    {
+      "event_id": "15157b9e-fe03-4413-a9db-ee2af0dec20f",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 20,
+      "at": "2026-07-12T06:36:09.896Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "fbb531e3-6d4f-496f-be14-9d3110fcc0b5",
+        "suggestions": [
+          {
+            "suggestion_id": "39ddd898-2743-4df0-96d4-47dac4ec6da7",
+            "content": "Skolverket guidance on digital tools in teaching (latest edition) — assign the section on professional responsibility as pre-reading.\n\n(Tailored to your request: \"readings for the students, nothing too long\")"
+          },
+          {
+            "suggestion_id": "21ad4abc-e503-483c-90cc-b4434d5ec875",
+            "content": "A curated set of three AI outputs on the same topic from different models, prepared in advance, so the comparison activity does not depend on live tools."
+          },
+          {
+            "suggestion_id": "e333b70a-30f7-4466-92a7-ef82f40b7d55",
+            "content": "UNESCO (2023) Guidance for generative AI in education and research — chapter on human agency, as a seminar text."
+          }
+        ],
+        "model": "simulated/scripted-pool@0.1",
+        "latency_ms": 634
+      }
+    },
+    {
+      "event_id": "79dfdc16-2efa-48a8-b62c-ead6e8f76435",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 21,
+      "at": "2026-07-12T06:36:27.911Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "39ddd898-2743-4df0-96d4-47dac4ec6da7",
+        "request_id": "fbb531e3-6d4f-496f-be14-9d3110fcc0b5",
+        "section_id": "b6112db7-5ac8-48ce-9439-a98be423de5c"
+      }
+    },
+    {
+      "event_id": "1d4a5c3e-82f0-47b8-be33-8dfd5a776167",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 22,
+      "at": "2026-07-12T06:36:27.911Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 7,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\nStudent teachers can design a classroom activity in which pupils compare an AI explanation with a textbook explanation and identify the epistemic differences."
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": "Skolverket guidance on digital tools in teaching (latest edition) — assign the section on professional responsibility as pre-reading.\n\n(Tailored to your request: \"readings for the students, nothing too long\")"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "77d8e283-c4e0-471a-8f04-f0be80bef2c9",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 23,
+      "at": "2026-07-12T06:36:45.116Z",
+      "type": "suggestion_rejected",
+      "data": {
+        "suggestion_id": "21ad4abc-e503-483c-90cc-b4434d5ec875",
+        "request_id": "fbb531e3-6d4f-496f-be14-9d3110fcc0b5",
+        "reason_tag": "Other"
+      }
+    },
+    {
+      "event_id": "a1f687eb-a80a-41f8-bc9d-464b7cce72fa",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 24,
+      "at": "2026-07-12T06:36:49.186Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "e333b70a-30f7-4466-92a7-ef82f40b7d55",
+        "request_id": "fbb531e3-6d4f-496f-be14-9d3110fcc0b5",
+        "section_id": "b6112db7-5ac8-48ce-9439-a98be423de5c"
+      }
+    },
+    {
+      "event_id": "978d386e-b997-407e-9b8d-d1caeabdb61e",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 25,
+      "at": "2026-07-12T06:36:49.187Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 8,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\nStudent teachers can design a classroom activity in which pupils compare an AI explanation with a textbook explanation and identify the epistemic differences."
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": "Skolverket guidance on digital tools in teaching (latest edition) — assign the section on professional responsibility as pre-reading.\n\n(Tailored to your request: \"readings for the students, nothing too long\")\n\nUNESCO (2023) Guidance for generative AI in education and research — chapter on human agency, as a seminar text."
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "bb7143ad-dc0f-43a0-9538-ccb01b985f12",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 26,
+      "at": "2026-07-12T06:37:25.142Z",
+      "type": "manual_edit",
+      "data": {
+        "section_id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+        "before": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"activities for a 45 min seminar on using AI critically in lesson planning\")\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group.",
+        "after": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+      }
+    },
+    {
+      "event_id": "d5d099b1-1587-4825-9532-2d1ed1cab947",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 27,
+      "at": "2026-07-12T06:37:25.144Z",
+      "type": "ai_text_modified_post_acceptance",
+      "data": {
+        "suggestion_id": "c2af007f-0ab6-4ac2-848e-89afca4aee12",
+        "section_id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+        "similarity": 0.478
+      }
+    },
+    {
+      "event_id": "64833776-75e3-4dac-a085-e36097b91312",
+      "session_id": "5859c4a0-0c24-4d99-84d9-25ae1b35094b",
+      "seq": 28,
+      "at": "2026-07-12T06:37:25.144Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 9,
+        "sections": [
+          {
+            "id": "64d9afd6-3956-4b80-aece-67d20b3de6c7",
+            "title": "Overview & rationale",
+            "content": ""
+          },
+          {
+            "id": "88296439-e8c2-4b3e-b5d7-752f61e65086",
+            "title": "Learning objectives",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"learning objectives for the same seminar\")\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\nStudent teachers can design a classroom activity in which pupils compare an AI explanation with a textbook explanation and identify the epistemic differences."
+          },
+          {
+            "id": "a5df891b-8518-41f3-be26-ac68b37184ec",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\nFishbowl discussion (15 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency.\n\nDeconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          },
+          {
+            "id": "0def4587-159f-4e9b-b33f-9ebf4fde0e3a",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "b6112db7-5ac8-48ce-9439-a98be423de5c",
+            "title": "Materials & readings",
+            "content": "Skolverket guidance on digital tools in teaching (latest edition) — assign the section on professional responsibility as pre-reading.\n\n(Tailored to your request: \"readings for the students, nothing too long\")\n\nUNESCO (2023) Guidance for generative AI in education and research — chapter on human agency, as a seminar text."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -160,6 +160,13 @@ button:disabled { opacity: 0.55; cursor: default; }
 .sug-actions span { font-size: 12px; color: var(--ink-soft); }
 .sug-card textarea { width: 100%; min-height: 90px; font: inherit; border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin-bottom: 8px; }
 .reject-reasons button { font-size: 12px; padding: 4px 8px; }
+.reject-reasons > span { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 6px; }
+.reject-reasons textarea { width: 100%; min-height: 56px; font: inherit; font-size: 13px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin: 8px 0; }
+button.tag-selected { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-size: 12px; padding: 4px 8px; }
+.sug-note { color: var(--ink-soft); font-size: 12.5px; font-style: italic; }
+.flag-editor { border: 1px dashed var(--accent); border-radius: 8px; padding: 10px; margin-top: 8px; background: #f4f8ff; }
+.flag-editor label { display: block; font-size: 13px; margin-bottom: 6px; color: var(--ink); }
+.flag-editor textarea { width: 100%; min-height: 64px; font: inherit; border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin-bottom: 8px; }
 
 /* Trace mirror */
 .trace-sub { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 10px; }
@@ -171,5 +178,5 @@ button:disabled { opacity: 0.55; cursor: default; }
 .trace-ctx { color: var(--ink-soft); font-style: italic; }
 .t-suggestion_accepted { color: var(--good); }
 .t-suggestion_rejected, .t-ai_text_removed { color: var(--bad); }
-.t-suggestion_edited_then_inserted, .t-ai_text_modified_post_acceptance { color: var(--warn); }
+.t-suggestion_edited_then_inserted, .t-ai_text_modified_post_acceptance, .t-ai_text_transformed { color: var(--warn); }
 .t-recall_marker { font-weight: 600; }

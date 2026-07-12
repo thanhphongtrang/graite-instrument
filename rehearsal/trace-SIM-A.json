@@ -1,0 +1,554 @@
+{
+  "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+  "events": [
+    {
+      "event_id": "a84db9fa-59b5-4786-83b6-96812ab4945b",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 1,
+      "at": "2026-07-11T21:21:25.610Z",
+      "type": "session_start",
+      "data": {
+        "schema_version": "0.1-draft",
+        "app_version": "0.1.0-boundary-object",
+        "participant_code": "DEMO-01",
+        "provider": {
+          "name": "simulated",
+          "model": "scripted-pool",
+          "version": "0.1"
+        },
+        "consent_ack": true
+      }
+    },
+    {
+      "event_id": "fd1a17bf-5ed4-46eb-b828-8469b6ce4aad",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 2,
+      "at": "2026-07-11T21:22:16.838Z",
+      "type": "manual_edit",
+      "data": {
+        "section_id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+        "before": "",
+        "after": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+      }
+    },
+    {
+      "event_id": "f1552cbd-6a56-4db6-8af6-3be95cd361ae",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 3,
+      "at": "2026-07-11T21:22:16.838Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 1,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": ""
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": ""
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "f64fa13a-f339-49d0-b37a-bc42e607aff3",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 4,
+      "at": "2026-07-11T21:22:50.656Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "73cb61f5-cb80-4149-b5ae-3b888fd02b2d",
+        "prompt_text": "Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an object of critique — testing it against curriculum aims, subject-didactic questions (what, for whom, why), and their own emerging judgment. The AI must appear as material to be questioned, not as an authority to be imitated. Audience: secondary teacher-education students. No group work for its own sake; every activity must end in an articulated, defensible position.",
+        "target_section_id": "6274588c-53a6-49cd-8436-4532482fa73a",
+        "chars": 488
+      }
+    },
+    {
+      "event_id": "3daf92ee-0216-454a-b12a-bfe5e1a2c0af",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 5,
+      "at": "2026-07-11T21:22:51.604Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "73cb61f5-cb80-4149-b5ae-3b888fd02b2d",
+        "suggestions": [
+          {
+            "suggestion_id": "813f7858-78ae-437b-a97e-fc4e11f2aa41",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")"
+          },
+          {
+            "suggestion_id": "beff660f-cf4d-4946-a4ba-32585fc32266",
+            "content": "Fishbowl discussion (30 min): half the group observes while the other half debates the claim \"an AI-written lesson plan is still my lesson plan if I approve it\". Observers note which arguments appeal to responsibility, which to efficiency."
+          },
+          {
+            "suggestion_id": "2571b129-0645-43b1-8a2e-1283e45087ae",
+            "content": "Deconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group."
+          }
+        ],
+        "model": "simulated/scripted-pool@0.1",
+        "latency_ms": 948
+      }
+    },
+    {
+      "event_id": "96136afd-ade2-481b-839e-22ccac8f317f",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 6,
+      "at": "2026-07-11T21:24:15.527Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "813f7858-78ae-437b-a97e-fc4e11f2aa41",
+        "request_id": "73cb61f5-cb80-4149-b5ae-3b888fd02b2d",
+        "section_id": "6274588c-53a6-49cd-8436-4532482fa73a"
+      }
+    },
+    {
+      "event_id": "388ee680-2aa1-4d5b-b49a-35e5037cd981",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 7,
+      "at": "2026-07-11T21:24:15.527Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 2,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": ""
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")"
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "1091f9e9-2411-49ad-b1c3-4e13f1889f76",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 8,
+      "at": "2026-07-11T21:24:38.828Z",
+      "type": "suggestion_rejected",
+      "data": {
+        "suggestion_id": "beff660f-cf4d-4946-a4ba-32585fc32266",
+        "request_id": "73cb61f5-cb80-4149-b5ae-3b888fd02b2d",
+        "reason_tag": "Not pedagogically appropriate"
+      }
+    },
+    {
+      "event_id": "c8592617-b204-4e08-979f-e95a23451ba3",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 9,
+      "at": "2026-07-11T21:24:55.258Z",
+      "type": "recall_marker",
+      "data": {
+        "note": "Rejected the fishbowl — not because the debate claim is wrong; \"an AI plan is still mine if I approve it\" is a genuine bildung question. I rejected it because it ignored my explicit 10-15 minute constraint and parks half the group as spectators. None of the four reject categories could say this; \"Not pedagogically appropriate\" was the nearest untruth.",
+        "section_id": "6274588c-53a6-49cd-8436-4532482fa73a"
+      }
+    },
+    {
+      "event_id": "69f10ddc-d645-46e9-92a4-d78514ce3a3f",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 10,
+      "at": "2026-07-11T21:25:45.277Z",
+      "type": "suggestion_edited_then_inserted",
+      "data": {
+        "suggestion_id": "2571b129-0645-43b1-8a2e-1283e45087ae",
+        "section_id": "6274588c-53a6-49cd-8436-4532482fa73a",
+        "original": "Deconstruction exercise (25 min): give students a deliberately mediocre AI-generated activity. Task: identify the three pedagogical assumptions it silently makes, then redesign it for their actual pupil group.",
+        "edited": "Deconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary.",
+        "similarity": 0.139
+      }
+    },
+    {
+      "event_id": "4e08f046-f1a0-4d9a-a624-5e41e746eaa8",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 11,
+      "at": "2026-07-11T21:25:45.277Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 3,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": ""
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "68ac4bca-bd70-48df-ab59-0a533150ea55",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 12,
+      "at": "2026-07-11T21:26:36.270Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "dfa83db9-5ebc-47b0-b6a5-3587963dced8",
+        "prompt_text": "Formulate three learning objectives for this 45-minute seminar. They must go beyond operating the tool: at least one must concern the student teacher's ability to justify when NOT to use AI, and at least one must connect AI use to the teacher's democratic mission (demokratiuppdraget) — being answerable to pupils, parents and colleagues for one's teaching choices. Write them as observable capabilities, not attitudes or feelings.",
+        "target_section_id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+        "chars": 431
+      }
+    },
+    {
+      "event_id": "dbcd5795-7a17-4395-afc2-ffd0b78fec58",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 13,
+      "at": "2026-07-11T21:26:37.608Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "dfa83db9-5ebc-47b0-b6a5-3587963dced8",
+        "suggestions": [
+          {
+            "suggestion_id": "fb8af567-b122-4378-abf2-0c28cb906930",
+            "content": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"Formulate three learning objectives for this 45-minute seminar. They must go beyond operating the tool: at least one mus\")"
+          },
+          {
+            "suggestion_id": "4c1bda61-65b9-46f2-a8f5-b6043ad9eb1f",
+            "content": "Student teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area."
+          },
+          {
+            "suggestion_id": "6f6ccd60-8f5d-422b-9d4e-572b8e2601c4",
+            "content": "Student teachers can design a classroom activity in which pupils compare an AI explanation with a textbook explanation and identify the epistemic differences."
+          }
+        ],
+        "model": "simulated/scripted-pool@0.1",
+        "latency_ms": 1337
+      }
+    },
+    {
+      "event_id": "412bbbe1-de13-428e-ae97-8d95089a45ec",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 14,
+      "at": "2026-07-11T21:27:48.976Z",
+      "type": "suggestion_edited_then_inserted",
+      "data": {
+        "suggestion_id": "fb8af567-b122-4378-abf2-0c28cb906930",
+        "section_id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+        "original": "Student teachers can critically evaluate an AI-generated lesson plan against curriculum goals (Lgr22) and justify which parts they would keep, revise, or reject.\n\n(Tailored to your request: \"Formulate three learning objectives for this 45-minute seminar. They must go beyond operating the tool: at least one mus\")",
+        "edited": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.",
+        "similarity": 0.286
+      }
+    },
+    {
+      "event_id": "a1d479ce-8757-49bb-b9d9-d53ecd0b164c",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 15,
+      "at": "2026-07-11T21:27:48.977Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 4,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject."
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "5481fdd1-2409-42f5-a1bc-dfcec73ca534",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 16,
+      "at": "2026-07-11T21:27:59.573Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "4c1bda61-65b9-46f2-a8f5-b6043ad9eb1f",
+        "request_id": "dfa83db9-5ebc-47b0-b6a5-3587963dced8",
+        "section_id": "e52bf137-7d14-48ce-8883-5a30a81c5db4"
+      }
+    },
+    {
+      "event_id": "93ca72cf-33e2-4f6e-9f5b-068831b1a9d6",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 17,
+      "at": "2026-07-11T21:27:59.573Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 5,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area."
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "e4105021-899b-4436-9286-39d7b2da8a08",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 18,
+      "at": "2026-07-11T21:28:19.858Z",
+      "type": "recall_marker",
+      "data": {
+        "note": "I accepted the task-vs-judgment objective faster than I have accepted anything from a machine in years. The distinction is exactly right — which is why it deserves scrutiny in the interview: did I judge it, or did it flatter my own vocabulary back at me? Note also that all three suggestions ignored my demokratiuppdrag requirement; I will have to write that objective myself.",
+        "section_id": "e52bf137-7d14-48ce-8883-5a30a81c5db4"
+      }
+    },
+    {
+      "event_id": "30dd711d-2d15-4975-9259-36843ddec604",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 19,
+      "at": "2026-07-11T21:28:39.629Z",
+      "type": "suggestion_rejected",
+      "data": {
+        "suggestion_id": "6f6ccd60-8f5d-422b-9d4e-572b8e2601c4",
+        "request_id": "dfa83db9-5ebc-47b0-b6a5-3587963dced8",
+        "reason_tag": "Other"
+      }
+    },
+    {
+      "event_id": "207eb47f-b3b3-4395-83ef-448c1e105f15",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 20,
+      "at": "2026-07-11T21:29:35.679Z",
+      "type": "manual_edit",
+      "data": {
+        "section_id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+        "before": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.\n\nStudent teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.",
+        "after": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.\n\n2. Student teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\n3. (Mine — the machine avoided this one twice.) Student teachers can identify one element of their planning where AI use is defensible efficiency and one where it would erode their answerability to pupils, parents and colleagues (demokratiuppdraget) — and can state the criterion that separates the two cases."
+      }
+    },
+    {
+      "event_id": "dfe9eedc-39a0-46ff-8161-0cdd2678ab5e",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 21,
+      "at": "2026-07-11T21:29:35.680Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 6,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.\n\n2. Student teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\n3. (Mine — the machine avoided this one twice.) Student teachers can identify one element of their planning where AI use is defensible efficiency and one where it would erode their answerability to pupils, parents and colleagues (demokratiuppdraget) — and can state the criterion that separates the two cases."
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "446c2d04-f064-49ca-a932-f16cb5f5e984",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 22,
+      "at": "2026-07-11T21:29:54.356Z",
+      "type": "manual_edit",
+      "data": {
+        "section_id": "6274588c-53a6-49cd-8436-4532482fa73a",
+        "before": "Think-pair-share (20 min): pairs prompt an AI tool for a lesson introduction on their topic, then annotate the output — green for \"keep\", yellow for \"revise\", red for \"reject with reason\" — and defend their annotations to another pair.\n\n(Tailored to your request: \"Propose three short activities (10–15 minutes each) in which student teachers examine an AI-generated lesson plan as an \")\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary.",
+        "after": "Granskning i par — examination in pairs (12 min): every pair receives the SAME AI-generated lesson introduction, prepared in advance — no live prompting; the seminar's minutes belong to judgment, not typing. Individually first (4 min), each student marks what they would keep, revise, or reject, every mark carrying a one-line reason anchored in their subject didactics (ämnesdidaktik) — a colour without a reason does not count. Then the pair must reach a joint verdict on the two marks where they disagree most. The disagreement, not the annotation scheme, is the learning material.\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+      }
+    },
+    {
+      "event_id": "c759868e-98a7-470e-904e-55784af1f6f9",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 23,
+      "at": "2026-07-11T21:29:54.357Z",
+      "type": "ai_text_removed",
+      "data": {
+        "suggestion_id": "813f7858-78ae-437b-a97e-fc4e11f2aa41",
+        "section_id": "6274588c-53a6-49cd-8436-4532482fa73a"
+      }
+    },
+    {
+      "event_id": "133c502d-26d4-4f54-ad8c-cae4c4d5f17f",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 24,
+      "at": "2026-07-11T21:29:54.357Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 7,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.\n\n2. Student teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\n3. (Mine — the machine avoided this one twice.) Student teachers can identify one element of their planning where AI use is defensible efficiency and one where it would erode their answerability to pupils, parents and colleagues (demokratiuppdraget) — and can state the criterion that separates the two cases."
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Granskning i par — examination in pairs (12 min): every pair receives the SAME AI-generated lesson introduction, prepared in advance — no live prompting; the seminar's minutes belong to judgment, not typing. Individually first (4 min), each student marks what they would keep, revise, or reject, every mark carrying a one-line reason anchored in their subject didactics (ämnesdidaktik) — a colour without a reason does not count. Then the pair must reach a joint verdict on the two marks where they disagree most. The disagreement, not the annotation scheme, is the learning material.\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": ""
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "57fdc4ce-05c9-42ea-8319-cf81af8f5d1b",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 25,
+      "at": "2026-07-11T21:30:30.248Z",
+      "type": "manual_edit",
+      "data": {
+        "section_id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+        "before": "",
+        "after": "No graded assessment in a 45-minute seminar — that would be theatre. The exit ticket is the written justification from the deconstruction exercise: one redesign decision and the reason a colleague would accept. I read them before the next session; they tell me whose judgment is forming and whose is deferring."
+      }
+    },
+    {
+      "event_id": "616c8767-1914-4032-adf1-9e2eb09044b5",
+      "session_id": "ba4f2e2f-792c-48ef-8e9c-5ffe52180079",
+      "seq": 26,
+      "at": "2026-07-11T21:30:30.248Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 8,
+        "sections": [
+          {
+            "id": "54c98803-ef21-4a2e-a434-a0e20b3a9d91",
+            "title": "Overview & rationale",
+            "content": "Seminar: Att granska AI — using AI critically in lesson planning (45 min).\n\nRationale (mine, not the machine's): Student teachers now meet generative AI before they have formed professional judgment (professionsomdöme). This seminar therefore treats AI output as didactic material to be examined — never as a shortcut past the questions that constitute teaching. The starting point is subject didactics (ämnesdidaktik): what is worth teaching, for whom, and why — questions no model can answer on the teacher's behalf. The seminar also serves the democratic mission (demokratiuppdraget): a teacher must be able to account publicly for the choices behind their teaching, including any choice they have delegated to a machine. Formation (bildning) is the horizon: the aim is not fluent tool use but a defensible relationship to the tool."
+          },
+          {
+            "id": "e52bf137-7d14-48ce-8883-5a30a81c5db4",
+            "title": "Learning objectives",
+            "content": "1. Student teachers can evaluate an AI-generated lesson plan against the relevant curriculum (Lgr22 or Gy25 — precision matters here) AND against subject-didactic criteria the curriculum does not spell out, justifying in writing which parts they keep, revise, or reject.\n\n2. Student teachers can articulate the difference between delegating a task to AI and delegating the judgment about that task, using examples from their own subject area.\n\n3. (Mine — the machine avoided this one twice.) Student teachers can identify one element of their planning where AI use is defensible efficiency and one where it would erode their answerability to pupils, parents and colleagues (demokratiuppdraget) — and can state the criterion that separates the two cases."
+          },
+          {
+            "id": "6274588c-53a6-49cd-8436-4532482fa73a",
+            "title": "Activities",
+            "content": "Granskning i par — examination in pairs (12 min): every pair receives the SAME AI-generated lesson introduction, prepared in advance — no live prompting; the seminar's minutes belong to judgment, not typing. Individually first (4 min), each student marks what they would keep, revise, or reject, every mark carrying a one-line reason anchored in their subject didactics (ämnesdidaktik) — a colour without a reason does not count. Then the pair must reach a joint verdict on the two marks where they disagree most. The disagreement, not the annotation scheme, is the learning material.\n\nDeconstruction exercise (15 min): students receive a deliberately mediocre AI-generated activity for their subject. Individually, they name the three didactic assumptions it makes silently — about the pupils, about why this content matters, and about the teacher's role. In the last five minutes each student writes one redesign decision and the justification they would give a colleague who asked \"why not keep the AI's version?\" The written justification is the product; the redesign is secondary."
+          },
+          {
+            "id": "e6d02c25-148e-4936-a2b6-a2d6f62fdf8e",
+            "title": "Assessment",
+            "content": "No graded assessment in a 45-minute seminar — that would be theatre. The exit ticket is the written justification from the deconstruction exercise: one redesign decision and the reason a colleague would accept. I read them before the next session; they tell me whose judgment is forming and whose is deferring."
+          },
+          {
+            "id": "9b774417-aa38-4097-9ae9-e2fc4b0eff89",
+            "title": "Materials & readings",
+            "content": ""
+          }
+        ]
+      }
+    }
+  ]
+}

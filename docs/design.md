@@ -1,6 +1,13 @@
 # GRAITE Co-Creation Instrument — Design Document
 
-**Version:** v0.1 boundary object · 2026-07-11 · **Status: DRAFT — the logging schema is a research decision and is NOT final until Phong and supervisors sign off (Phase 0's purpose is exactly this co-design).**
+**Version:** v0.2 boundary object · 2026-07-12 · **Status: DRAFT — the logging schema is a research decision and is NOT final until Phong and supervisors sign off (Phase 0's purpose is exactly this co-design).**
+
+> **Schema v0.2-draft changes (2026-07-12, from the synthetic rehearsal — see rehearsal/assessment.md):**
+> 1. `suggestion_rejected` gains `reason_text` (free text) and two new tags ("Ignored my instructions or constraints", "Too much preparation or time") — both rehearsal personas' true reasons fell outside the original four tags, destroying RQ1's core datum at capture.
+> 2. New event `ai_text_transformed` between modified and removed (sim 0.15–0.6): SIM-A disputed the binary coding — "I kept the machine's skeleton and replaced its flesh; that is not removal." Thresholds are draft values; every event carries `similarity` so later recoding needs no recollection.
+> 3. Provider annotations moved out of insertable content into a card-only `note` field — the "(Tailored to…)" tail had contaminated artifacts, acceptance volume, and edit metrics across four constructs.
+> 4. `prompt_submitted`/`suggestions_shown` gain `request_index` — first-cycle latencies are orientation-confounded (SIM-B's longest "deliberation" was finding the Accept button); a real protocol adds a warm-up task.
+> 5. Recall markers get a multi-line inline editor (markers did real interpretive work in rehearsal — they repaired two capture failures) and an explicit **End session** button now emits `session_end` (neither rehearsal trace had one).
 
 ## 1. What this is
 
@@ -30,10 +37,11 @@ Session context (in `session_start.data`): `schema_version`, `app_version`, `par
 | `suggestions_shown` | `request_id, suggestions[{id, content}], model, latency_ms` | suggestion lifecycle (CoAuthor) |
 | `suggestion_accepted` | `suggestion_id, request_id, section_id` | acceptance streaks → automation-deference candidates (interpret only via recall) |
 | `suggestion_edited_then_inserted` | `suggestion_id, section_id, original, edited, similarity` | **negotiated authorship** — agency reconstituted, not surrendered |
-| `suggestion_rejected` | `suggestion_id, request_id, reason_tag?` (optional quick tag) | **judgment moment** (Suchman's breakdowns made visible) |
+| `suggestion_rejected` | `suggestion_id, request_id, reason_tag?, reason_text?` (tag + free text, both optional) | **judgment moment** (Suchman's breakdowns made visible) |
 | `manual_edit` | `section_id, before, after` (snapshot on pause/blur) | human authorship baseline |
-| `ai_text_modified_post_acceptance` | `suggestion_id, section_id, similarity` | delayed judgment; authorship distribution over time |
-| `ai_text_removed` | `suggestion_id, section_id` | **override** — the strongest judgment signal |
+| `ai_text_modified_post_acceptance` | `suggestion_id, section_id, similarity` (sim ≥ 0.6) | delayed judgment; light rework |
+| `ai_text_transformed` | `suggestion_id, section_id, similarity` (0.15 ≤ sim < 0.6) | **negotiated authorship, deep form** — skeleton kept, flesh replaced |
+| `ai_text_removed` | `suggestion_id, section_id, similarity` (sim < 0.15) | **override** — the strongest judgment signal |
 | `recall_marker` | `note?, section_id?` | participant-flagged stimulated-recall anchor |
 | `artifact_snapshot` | `version, sections[]` | version history → distribution of authorship |
 | `section_added/renamed/removed` | `section_id, title` | artifact structure agency |

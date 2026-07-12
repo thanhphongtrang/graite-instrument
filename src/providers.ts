@@ -49,11 +49,14 @@ export class SimulatedProvider implements SuggestionProvider {
     this.cursor[req.sectionKind] = (start + 3) % pool.length
     const picks: string[] = []
     for (let i = 0; i < 3; i++) picks.push(pool[(start + i) % pool.length])
-    // Echo the prompt so the demo feels responsive to input:
+    // Rehearsal finding (v0.2): provider annotations must NEVER be part of the
+    // insertable content — the "(Tailored to…)" tail contaminated artifacts,
+    // acceptance volume, and edit metrics. Echo lives in `note`, card-only.
     const echo = req.prompt.trim()
     return picks.map((content, i) => ({
       suggestion_id: crypto.randomUUID(),
-      content: i === 0 && echo ? `${content}\n\n(Tailored to your request: "${echo.slice(0, 120)}")` : content,
+      content,
+      note: i === 0 && echo ? `Responding to: "${echo.slice(0, 120)}"` : undefined,
     }))
   }
 }

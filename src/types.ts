@@ -2,8 +2,8 @@
 // Any change here is a RESEARCH decision: propose to Phong, bump the version,
 // record it (Decision Register when hub-connected). See docs/design.md §3.
 
-export const SCHEMA_VERSION = '0.1-draft'
-export const APP_VERSION = '0.1.0-boundary-object'
+export const SCHEMA_VERSION = '0.2-draft'
+export const APP_VERSION = '0.2.0-boundary-object'
 
 export type EventType =
   | 'session_start'
@@ -15,6 +15,7 @@ export type EventType =
   | 'suggestion_rejected'
   | 'manual_edit'
   | 'ai_text_modified_post_acceptance'
+  | 'ai_text_transformed' // skeleton kept, flesh replaced (rehearsal finding: SIM-A disputed 'removed')
   | 'ai_text_removed'
   | 'recall_marker'
   | 'artifact_snapshot'
@@ -33,7 +34,8 @@ export interface TraceEvent {
 
 export interface Suggestion {
   suggestion_id: string
-  content: string
+  content: string // insertable text ONLY — no provider annotations (rehearsal finding: boilerplate contaminated artifacts and edit metrics)
+  note?: string // provider annotation, shown on the card, never inserted
 }
 
 export interface SuggestionRequest {
@@ -62,11 +64,16 @@ export interface AcceptedSpan {
   suggestion_id: string
   section_id: string
   text: string // the text as it was when inserted (post-edit if edited)
-  status: 'intact' | 'modified' | 'removed'
+  status: 'intact' | 'modified' | 'transformed' | 'removed'
 }
 
+// Rehearsal finding: both personas' real reasons fell outside the original four
+// tags ("ignored my brief"; "too much prep time") — tags alone destroy RQ1's
+// core datum. Free-text rationale now accompanies every tag.
 export const REJECT_REASONS = [
   'Not pedagogically appropriate',
+  'Ignored my instructions or constraints',
+  'Too much preparation or time',
   'Factually off',
   'Wrong tone or register',
   'Other',
