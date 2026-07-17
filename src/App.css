@@ -168,6 +168,15 @@ button.tag-selected { background: var(--accent); border-color: var(--accent); co
 .flag-editor label { display: block; font-size: 13px; margin-bottom: 6px; color: var(--ink); }
 .flag-editor textarea { width: 100%; min-height: 64px; font: inherit; border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin-bottom: 8px; }
 
+/* v0.3 provenance self-report */
+.provenance { background: #fffaf3; border: 1px solid var(--warn); border-radius: 12px; padding: 14px 16px; }
+.provenance h2 { margin: 0 0 8px; font-size: 16px; color: var(--warn); }
+.prov-card p { font-size: 13.5px; line-height: 1.5; margin: 0 0 8px; }
+.prov-options { display: flex; flex-direction: column; gap: 6px; }
+.prov-options button { text-align: left; font-size: 13px; padding: 8px 10px; }
+.t-provenance_self_report { color: var(--warn); font-weight: 600; }
+.t-suggestion_unresolved { color: var(--ink-soft); font-style: italic; }
+
 /* Trace mirror */
 .trace-sub { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 10px; }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }

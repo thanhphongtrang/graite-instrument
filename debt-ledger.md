@@ -1,5 +1,9 @@
 # Debt ledger — deliberate deferrals with receipts
 
+## Deferred (v0.3, 2026-07-17)
+- [2026-07-17] deferred STRUCTURAL similarity (graph/sequence parse of AI vs edited text) because a word-overlap metric can't see "skeleton kept, flesh replaced" (Round 2: sim 0.019 on a genuine skeleton-preserving rework) — but structural parsing is a P4 research contribution, not a boundary-object feature. v0.3 instead asks the participant (provenance_self_report). Revisit when building the real analysis pipeline.
+- [2026-07-17] deferred multi-session consent deltas (per-session "what changed / what your trace was used for" screen) because the boundary object is single-session; the finding (SIM-A-R2: "the second consent is not the same act as the first") is logged in ethics-skeleton.md for the real study.
+
 ## Named checks (failures promoted to rules)
 - **No-log-in-updater check** (2026-07-11): `trace.log()` must NEVER be called inside a React state-updater function — StrictMode double-invokes updaters and silently duplicates trace events (caught in first verification walkthrough: post-acceptance events fired twice). Review every new `set*(prev => …)` for logging side effects before merge.
 

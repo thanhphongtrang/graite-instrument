@@ -2,8 +2,8 @@
 // Any change here is a RESEARCH decision: propose to Phong, bump the version,
 // record it (Decision Register when hub-connected). See docs/design.md §3.
 
-export const SCHEMA_VERSION = '0.2-draft'
-export const APP_VERSION = '0.2.0-boundary-object'
+export const SCHEMA_VERSION = '0.3-draft'
+export const APP_VERSION = '0.3.0-boundary-object'
 
 export type EventType =
   | 'session_start'
@@ -17,6 +17,8 @@ export type EventType =
   | 'ai_text_modified_post_acceptance'
   | 'ai_text_transformed' // skeleton kept, flesh replaced (rehearsal finding: SIM-A disputed 'removed')
   | 'ai_text_removed'
+  | 'provenance_self_report' // v0.3: participant names what they kept when the detector can't tell (Round-2 finding: sim 0.019 on a skeleton-preserving rework)
+  | 'suggestion_unresolved' // v0.3: shown but never accepted/edited/rejected — the "non-decision" (Round-2, SIM-C)
   | 'recall_marker'
   | 'artifact_snapshot'
   | 'section_added'
@@ -64,8 +66,18 @@ export interface AcceptedSpan {
   suggestion_id: string
   section_id: string
   text: string // the text as it was when inserted (post-edit if edited)
-  status: 'intact' | 'modified' | 'transformed' | 'removed'
+  status: 'intact' | 'modified' | 'transformed' | 'removed' | 'queried'
 }
+
+// v0.3: when accepted AI text diverges below the confident-modification band,
+// the instrument stops guessing and asks the participant what they kept.
+// Their answer is the record; the raw similarity is still logged for recoding.
+export const PROVENANCE_OPTIONS = [
+  { key: 'structure', label: 'Its structure — I kept the shape, replaced the words' },
+  { key: 'ideas', label: 'Its ideas — I kept the point, wrote it my way' },
+  { key: 'phrases', label: 'Some phrases, not much else' },
+  { key: 'nothing', label: 'Nothing — this is entirely mine now' },
+] as const
 
 // Rehearsal finding: both personas' real reasons fell outside the original four
 // tags ("ignored my brief"; "too much prep time") — tags alone destroy RQ1's

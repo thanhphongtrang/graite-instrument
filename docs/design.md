@@ -1,6 +1,12 @@
 # GRAITE Co-Creation Instrument — Design Document
 
-**Version:** v0.2 boundary object · 2026-07-12 · **Status: DRAFT — the logging schema is a research decision and is NOT final until Phong and supervisors sign off (Phase 0's purpose is exactly this co-design).**
+**Version:** v0.3 boundary object · 2026-07-17 · **Status: DRAFT — the logging schema is a research decision and is NOT final until Phong and supervisors sign off (Phase 0's purpose is exactly this co-design).**
+
+> **Schema v0.3-draft changes (2026-07-17, from Round 2 rehearsal — see rehearsal/assessment-round2.md):**
+> 1. Round 2 FALSIFIED the auto-detector: a skeleton-preserving rework scored similarity 0.019 (word overlap ~0) and was mis-coded `ai_text_removed` — the very dispute v0.2 tried to settle. Fix: below the confident-modification band (sim < 0.6) the instrument no longer guesses transform-vs-remove; it asks the participant `provenance_self_report` (kept: structure / ideas / phrases / nothing). Their answer is the record; raw similarity is still logged for recoding. Above 0.6 it still auto-logs `ai_text_modified_post_acceptance` (clear light edit, no interruption). This makes the trace obey the study's own epistemology: traces never speak alone.
+> 2. New `suggestion_unresolved` event, emitted at session_end for every shown suggestion with no accept/edit/reject — the "non-decision" (SIM-C: "it stopped being a decision the second I moved my eyes"), previously invisible.
+> 3. The self-report question is deliberately NON-blocking (no modal, no forced reflection) — Round 2 (SIM-C) showed friction trades ecological validity for data; an unanswered question stays a `queried` span and surfaces as unresolved at session end.
+> **Deferred to P4 / real build, not v0.x:** structural/graph-based similarity (parse both texts into actor-action-object steps, compare sequences) — SIM-A-R2's own proposal; it is a research contribution, not a demo feature. Reactivity ("the receipt problem") and the trajectory doctrine (session index as covariate; ≥2 sessions/participant; weight interviews to later sessions) are ANALYSIS-PLAN items, not code.
 
 > **Schema v0.2-draft changes (2026-07-12, from the synthetic rehearsal — see rehearsal/assessment.md):**
 > 1. `suggestion_rejected` gains `reason_text` (free text) and two new tags ("Ignored my instructions or constraints", "Too much preparation or time") — both rehearsal personas' true reasons fell outside the original four tags, destroying RQ1's core datum at capture.

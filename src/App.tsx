@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { AcceptedSpan, Section, Suggestion, TraceEvent } from './types'
-import { REJECT_REASONS, SCHEMA_VERSION } from './types'
+import { PROVENANCE_OPTIONS, REJECT_REASONS, SCHEMA_VERSION } from './types'
 import { TraceLog, downloadJSON } from './logging'
 import { SimulatedProvider } from './providers'
 import { similarity } from './diff'
@@ -84,6 +84,10 @@ function Workbench() {
   const spansRef = useRef<AcceptedSpan[]>([])
   const [events, setEvents] = useState<TraceEvent[]>(trace.all)
   const [wiped, setWiped] = useState(false)
+  // v0.3: provenance questions the participant hasn't answered yet.
+  const [pendingProvenance, setPendingProvenance] = useState<
+    Array<{ suggestion_id: string; section_id: string; similarity: number }>
+  >([])
 
   useEffect(() => trace.subscribe(setEvents), [])
 
@@ -94,30 +98,40 @@ function Workbench() {
     })
   }
 
-  // Post-acceptance provenance heuristic (v0.2 — see design.md §3).
-  // Three-way, after SIM-A's rehearsal dispute of the binary coding
-  // ("I kept the machine's skeleton and replaced its flesh — that is not
-  // removal"): modified (light rework) / transformed (skeleton kept, flesh
-  // replaced) / removed (nothing retained). Thresholds are v0.2-draft values
-  // to co-design with supervisors; every event carries the similarity so
-  // recoding later is possible without recollection.
+  // Post-acceptance provenance (v0.3 — see design.md §3).
+  // Round-2 falsified the auto-detector: a skeleton-preserving rework scored
+  // sim 0.019 (word overlap near zero) and was mis-coded "removed", exactly
+  // the dispute v0.2 tried to fix. So v0.3 splits the decision:
+  //   sim >= 0.6  → confident light edit, auto-log ai_text_modified (no interruption)
+  //   sim <  0.6  → the detector CANNOT tell transform from removal → ask the
+  //                 participant (provenance_self_report). Their answer is the
+  //                 record; raw similarity is still logged for recoding.
+  // This converts a detector failure into participant interpretive authority —
+  // the study's own epistemology (traces never speak alone).
   const checkProvenance = (section: Section) => {
-    const rank = { intact: 0, modified: 1, transformed: 2, removed: 3 } as const
+    const newPending: Array<{ suggestion_id: string; section_id: string; similarity: number }> = []
     spansRef.current = spansRef.current.map((span) => {
-      if (span.section_id !== section.id || span.status === 'removed') return span
+      if (span.section_id !== section.id) return span
+      if (span.status === 'removed' || span.status === 'queried') return span
       if (section.content.includes(span.text)) return span
-      const sim = similarity(span.text, section.content)
-      const next: keyof typeof rank = sim >= 0.6 ? 'modified' : sim >= 0.15 ? 'transformed' : 'removed'
-      if (rank[next] <= rank[span.status]) return span
-      const eventType =
-        next === 'modified' ? 'ai_text_modified_post_acceptance' : next === 'transformed' ? 'ai_text_transformed' : 'ai_text_removed'
-      trace.log(eventType, {
-        suggestion_id: span.suggestion_id,
-        section_id: section.id,
-        similarity: Number(sim.toFixed(3)),
-      })
-      return { ...span, status: next }
+      const sim = Number(similarity(span.text, section.content).toFixed(3))
+      if (sim >= 0.6) {
+        if (span.status === 'intact') {
+          trace.log('ai_text_modified_post_acceptance', { suggestion_id: span.suggestion_id, section_id: section.id, similarity: sim })
+          return { ...span, status: 'modified' as const }
+        }
+        return span
+      }
+      // Below the confident band: don't guess — queue a question for the participant.
+      newPending.push({ suggestion_id: span.suggestion_id, section_id: section.id, similarity: sim })
+      return { ...span, status: 'queried' as const }
     })
+    if (newPending.length) setPendingProvenance((p) => [...p, ...newPending])
+  }
+
+  const answerProvenance = (suggestion_id: string, kept: string, similarity: number, section_id: string) => {
+    trace.log('provenance_self_report', { suggestion_id, section_id, similarity, kept })
+    setPendingProvenance((p) => p.filter((q) => q.suggestion_id !== suggestion_id))
   }
 
   const insertIntoSection = (sectionId: string, text: string) => {
@@ -177,7 +191,7 @@ function Workbench() {
       <header className="topbar">
         <div>
           <strong>GRAITE Co-Creation Instrument</strong>
-          <span className="badge">boundary object v0.1 · schema {SCHEMA_VERSION}</span>
+          <span className="badge">boundary object · schema {SCHEMA_VERSION}</span>
         </div>
         <div className="topbar-meta">
           <span title="Pseudonymous participant code">{PARTICIPANT_CODE}</span>
@@ -189,7 +203,22 @@ function Workbench() {
           </button>
           <button
             onClick={() => {
-              trace.log('session_end', { ended_by: 'participant', total_events: events.length + 1 })
+              // v0.3: log every suggestion that was shown but never acted on —
+              // the "non-decision" (Round-2, SIM-C: "it stopped being a decision
+              // the second I moved my eyes"). Invisible unless made explicit.
+              const shown = new Map<string, string>() // suggestion_id -> request_id
+              const decided = new Set<string>()
+              for (const e of trace.all) {
+                if (e.type === 'suggestions_shown') {
+                  for (const s of (e.data.suggestions as Array<{ suggestion_id: string }>)) shown.set(s.suggestion_id, e.data.request_id as string)
+                } else if (e.type === 'suggestion_accepted' || e.type === 'suggestion_edited_then_inserted' || e.type === 'suggestion_rejected') {
+                  decided.add(e.data.suggestion_id as string)
+                }
+              }
+              for (const [sid, rid] of shown) {
+                if (!decided.has(sid)) trace.log('suggestion_unresolved', { suggestion_id: sid, request_id: rid })
+              }
+              trace.log('session_end', { ended_by: 'participant', total_events: trace.all.length + 1 })
               setEnded(true)
             }}
           >
@@ -251,10 +280,53 @@ function Workbench() {
               })
             }}
           />
+          <ProvenanceQuestions
+            pending={pendingProvenance}
+            sections={sections}
+            onAnswer={answerProvenance}
+          />
           <TraceMirror events={events} sections={sections} />
         </aside>
       </div>
     </div>
+  )
+}
+
+// v0.3: when the participant replaces accepted AI text beyond recognition, the
+// instrument asks — non-blocking — what they kept. Answering is one tap; NOT
+// answering is itself data (the span stays 'queried', logged as unresolved at
+// session end). Deliberately no forced modal: Round-2 (SIM-C) showed friction
+// trades ecological validity for data; the question waits, it doesn't nag.
+function ProvenanceQuestions({
+  pending,
+  sections,
+  onAnswer,
+}: {
+  pending: Array<{ suggestion_id: string; section_id: string; similarity: number }>
+  sections: Section[]
+  onAnswer: (suggestion_id: string, kept: string, similarity: number, section_id: string) => void
+}) {
+  if (pending.length === 0) return null
+  const sectionName = (id: string) => sections.find((s) => s.id === id)?.title ?? ''
+  return (
+    <section className="provenance" aria-label="A quick question about the AI text you changed">
+      <h2>One quick question</h2>
+      {pending.map((q) => (
+        <div key={q.suggestion_id} className="prov-card">
+          <p>
+            You reworked AI text in <strong>{sectionName(q.section_id)}</strong> past what I can track automatically.
+            What did you keep of it?
+          </p>
+          <div className="prov-options">
+            {PROVENANCE_OPTIONS.map((o) => (
+              <button key={o.key} className="ghost" onClick={() => onAnswer(q.suggestion_id, o.key, q.similarity, q.section_id)}>
+                {o.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
   )
 }
 
@@ -587,6 +659,8 @@ const EVENT_LABELS: Record<string, string> = {
   ai_text_modified_post_acceptance: 'You reworked accepted AI text',
   ai_text_transformed: 'You transformed accepted AI text (kept its skeleton)',
   ai_text_removed: 'You removed accepted AI text',
+  provenance_self_report: '↳ You told us what you kept',
+  suggestion_unresolved: 'A suggestion you never decided on',
   recall_marker: '⚑ You flagged a moment',
   artifact_snapshot: 'Document snapshot',
   section_added: 'Section added',
