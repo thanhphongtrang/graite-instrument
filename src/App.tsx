@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import type { AcceptedSpan, Section, Suggestion, TraceEvent } from './types'
 import { PROVENANCE_OPTIONS, REJECT_REASONS, SCHEMA_VERSION } from './types'
 import { TraceLog, downloadJSON } from './logging'
-import { SimulatedProvider } from './providers'
+import { SimulatedProvider, subjectAreaKey } from './providers'
 import { similarity } from './diff'
 import './App.css'
 
@@ -10,6 +10,29 @@ const PARTICIPANT_CODE = 'DEMO-01' // pseudonymous always; hardcoded for the bou
 
 const provider = new SimulatedProvider()
 const trace = new TraceLog()
+
+// v0.4-draft (A2): session_index is "settable at launch" via a URL param —
+// the researcher constructs per-session links, not the participant typing a
+// number (avoids seeding demand characteristics about "which session is this").
+// On a page refresh mid-session, prefer the value already logged in this
+// browser's session_start event over the URL, so a reload can't drift it.
+function resolveSessionIndex(existingSessionStart: TraceEvent | undefined): number {
+  if (existingSessionStart && typeof existingSessionStart.data.session_index === 'number') {
+    return existingSessionStart.data.session_index
+  }
+  const raw = new URLSearchParams(window.location.search).get('session_index')
+  const n = raw ? parseInt(raw, 10) : 1
+  return Number.isFinite(n) && n >= 1 ? n : 1
+}
+
+// v0.4-draft (A2): task-framing configurability — one constant per subject key,
+// no template system (YAGNI). Shares subjectAreaKey with providers.ts so the
+// doc title and the suggestion pool never disagree about which subject a
+// session is in.
+const TASK_FRAMING: Record<'math' | 'generic', string> = {
+  math: 'Mathematics seminar plan — working draft',
+  generic: 'Course material — working draft',
+}
 
 const DEFAULT_SECTIONS: Section[] = [
   { id: crypto.randomUUID(), title: 'Overview & rationale', kind: 'generic', content: '' },
@@ -30,26 +53,50 @@ const LOGGED_THINGS = [
 ]
 
 export default function App() {
+  const existingSessionStart = useMemo(() => trace.all.find((e) => e.type === 'session_start'), [])
+  const sessionIndex = useMemo(() => resolveSessionIndex(existingSessionStart), [existingSessionStart])
   const [consented, setConsented] = useState(!trace.isNew)
+  const [subjectArea, setSubjectArea] = useState<string | null>(
+    (existingSessionStart?.data.subject_area as string | null | undefined) ?? null,
+  )
   if (!consented) {
     return (
       <ConsentGate
-        onAccept={() => {
-          trace.logSessionStart(PARTICIPANT_CODE, provider)
+        sessionIndex={sessionIndex}
+        onAccept={(subjectAreaInput) => {
+          const normalized = subjectAreaInput.trim() || null
+          setSubjectArea(normalized)
+          trace.logSessionStart(PARTICIPANT_CODE, provider, {
+            session_index: sessionIndex,
+            subject_area: normalized,
+            consent_delta_shown: sessionIndex >= 2,
+          })
           setConsented(true)
         }}
       />
     )
   }
-  return <Workbench />
+  return <Workbench subjectArea={subjectArea} />
 }
 
-function ConsentGate({ onAccept }: { onAccept: () => void }) {
+function ConsentGate({ sessionIndex, onAccept }: { sessionIndex: number; onAccept: (subjectArea: string) => void }) {
+  const [subjectAreaInput, setSubjectAreaInput] = useState('')
   return (
     <div className="consent-wrap">
       <main className="consent-card" aria-labelledby="consent-title">
         <p className="badge">Demo — synthetic data only · no participants · no network calls</p>
         <h1 id="consent-title">GRAITE Co-Creation Instrument</h1>
+        {sessionIndex >= 2 && (
+          <div className="consent-delta" aria-label="What changed since your last session">
+            <h2>Since your last session</h2>
+            <p>This is session {sessionIndex}. Since you last used this instrument, what we record changed:</p>
+            <ul>
+              <li>Your subject area (below) is now recorded, so we can tell whether it shapes your trace.</li>
+              <li>When you rework accepted AI text past what we can track automatically, we now ask you directly what you kept, instead of guessing.</li>
+              <li>Suggestions you never acted on are now logged as "unresolved" rather than silently dropped.</li>
+            </ul>
+          </div>
+        )}
         <p>
           You are about to co-create a piece of course material with an AI partner. This environment is a{' '}
           <strong>research instrument</strong>: your interaction with it is recorded as a structured trace, which
@@ -67,7 +114,15 @@ function ConsentGate({ onAccept }: { onAccept: () => void }) {
           Everything stays in this browser. You can <strong>withdraw and wipe all data</strong> with one click at any
           time — no copy survives.
         </p>
-        <button className="primary" onClick={onAccept}>
+        <label htmlFor="subject-area-input">Your subject area / ämnesområde (optional)</label>
+        <input
+          id="subject-area-input"
+          type="text"
+          value={subjectAreaInput}
+          onChange={(e) => setSubjectAreaInput(e.target.value)}
+          placeholder="e.g. mathematics didactics, Swedish, civics"
+        />
+        <button className="primary" onClick={() => onAccept(subjectAreaInput)}>
           I understand — start the session
         </button>
       </main>
@@ -75,7 +130,7 @@ function ConsentGate({ onAccept }: { onAccept: () => void }) {
   )
 }
 
-function Workbench() {
+function Workbench({ subjectArea }: { subjectArea: string | null }) {
   const [sections, setSections] = useState<Section[]>(DEFAULT_SECTIONS)
   const [ended, setEnded] = useState(false)
   // Provenance spans live in a ref, not state: they are never rendered, and
@@ -242,6 +297,7 @@ function Workbench() {
         <Editor
           sections={sections}
           setSections={setSections}
+          docTitle={TASK_FRAMING[subjectAreaKey(subjectArea ?? undefined)]}
           onManualEdit={(section, before, after) => {
             trace.log('manual_edit', { section_id: section.id, before, after })
             checkProvenance(section)
@@ -251,6 +307,7 @@ function Workbench() {
         <aside className="side">
           <AIPanel
             sections={sections}
+            subjectArea={subjectArea}
             onAccept={(sug, sectionId, requestId) => {
               trace.log('suggestion_accepted', {
                 suggestion_id: sug.suggestion_id,
@@ -333,10 +390,12 @@ function ProvenanceQuestions({
 function Editor({
   sections,
   setSections,
+  docTitle,
   onManualEdit,
 }: {
   sections: Section[]
   setSections: React.Dispatch<React.SetStateAction<Section[]>>
+  docTitle: string
   onManualEdit: (section: Section, before: string, after: string) => void
 }) {
   const beforeRef = useRef<Record<string, string>>({})
@@ -347,7 +406,7 @@ function Editor({
   const [flagNote, setFlagNote] = useState('')
   return (
     <main className="editor" aria-label="Course material editor">
-      <h1 className="doc-title">Course material — working draft</h1>
+      <h1 className="doc-title">{docTitle}</h1>
       {sections.map((s) => (
         <section key={s.id} className="section-card">
           <div className="section-head">
@@ -444,11 +503,13 @@ function Editor({
 
 function AIPanel({
   sections,
+  subjectArea,
   onAccept,
   onEditedInsert,
   onReject,
 }: {
   sections: Section[]
+  subjectArea: string | null
   onAccept: (s: Suggestion, sectionId: string, requestId: string) => void
   onEditedInsert: (s: Suggestion, edited: string, sectionId: string) => void
   onReject: (s: Suggestion, requestId: string, reason?: string, reasonText?: string) => void
@@ -486,6 +547,7 @@ function AIPanel({
       prompt,
       sectionKind: targetSection.kind,
       sectionTitle: targetSection.title,
+      subjectArea: subjectArea ?? undefined,
     })
     trace.log('suggestions_shown', {
       request_id: requestId,

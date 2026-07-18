@@ -64,13 +64,25 @@ export class TraceLog {
     return ev
   }
 
-  logSessionStart(participant_code: string, provider: SuggestionProvider) {
+  logSessionStart(
+    participant_code: string,
+    provider: SuggestionProvider,
+    opts: { session_index: number; subject_area: string | null; consent_delta_shown: boolean },
+  ) {
     this.log('session_start', {
       schema_version: SCHEMA_VERSION,
       app_version: APP_VERSION,
       participant_code,
       provider: { name: provider.name, model: provider.model, version: provider.version },
       consent_ack: true,
+      // v0.4-draft (A2): session_index is the trajectory doctrine's covariate
+      // (see docs/analysis-plan.md) — without it, multi-session analysis has no
+      // anchor. subject_area makes Willermark 2025's subject-specificity claim
+      // testable instead of asserted. consent_delta_shown records whether the
+      // B+7 "since your last session" screen fired (session_index >= 2).
+      session_index: opts.session_index,
+      subject_area: opts.subject_area,
+      consent_delta_shown: opts.consent_delta_shown,
     })
   }
 

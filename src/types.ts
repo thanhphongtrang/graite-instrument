@@ -2,8 +2,8 @@
 // Any change here is a RESEARCH decision: propose to Phong, bump the version,
 // record it (Decision Register when hub-connected). See docs/design.md §3.
 
-export const SCHEMA_VERSION = '0.3-draft'
-export const APP_VERSION = '0.3.0-boundary-object'
+export const SCHEMA_VERSION = '0.4-draft'
+export const APP_VERSION = '0.4.0-boundary-object'
 
 export type EventType =
   | 'session_start'
@@ -44,6 +44,12 @@ export interface SuggestionRequest {
   prompt: string
   sectionKind: string
   sectionTitle: string
+  // v0.4-draft: subject-variant suggestion pools (B+1, Round 3 methodology fix).
+  // A generic pool serving a subject-specialist persona manufactures ecologically
+  // nonsense rejections and flattens the subject-variance Willermark 2025 claims
+  // (see prereading-brief.md, p1-positioning-map.md §6). Optional — undefined
+  // falls back to the generic pool.
+  subjectArea?: string
 }
 
 export interface SuggestionProvider {

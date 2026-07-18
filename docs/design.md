@@ -1,6 +1,14 @@
 # GRAITE Co-Creation Instrument — Design Document
 
-**Version:** v0.3 boundary object · 2026-07-17 · **Status: DRAFT — the logging schema is a research decision and is NOT final until Phong and supervisors sign off (Phase 0's purpose is exactly this co-design).**
+**Version:** v0.4-draft boundary object · 2026-07-18 · **Status: DRAFT — the logging schema is a research decision and is NOT final until Phong and supervisors sign off (Phase 0's purpose is exactly this co-design).**
+
+> **Schema v0.4-draft changes (2026-07-18, theory-integration + Round 3 prep — see phd-vault/projects/phase0-next-plan.md Workstream A2, B+1, B+7):**
+> 1. `session_start.data.session_index` (integer, default 1, resolved from a `?session_index=N` URL param at launch, or from the existing session's own `session_start` event on reload) — the trajectory doctrine's covariate (Round 2 finding: trust the trajectory, not any one session). Previously absent; multi-session analysis had no anchor.
+> 2. `session_start.data.subject_area` (optional free text, one field on the consent screen: "Your subject area / ämnesområde") — makes Willermark 2025's subject-specificity claim testable against instrument data instead of asserted. `null` if left blank.
+> 3. Task-framing configurability: the document title (`docTitle` in `App.tsx`) is now a small constant map (`TASK_FRAMING`, keyed `math | generic`) selected by the same `subjectAreaKey()` helper the suggestion-pool lookup uses — deliberately NOT a template system (YAGNI), just two constants and one shared key function.
+> 4. **B+1 — subject-variant suggestion pool** (`providers.ts`): a `MATH_POOLS` set (mathematics-didactics framing) alongside the original generic pool, selected via `subjectAreaKey()` (substring match on "math"/"matte", generic fallback). Without this, a subject-specialist persona served the generic AI-literacy pool would receive ecologically nonsense suggestions, manufacturing rejections and flattening the very subject-variance the field-test question (Round 3, Q2) is designed to detect. **Confessed confound**: SIM-A's Round 1/2 "documented deafness" (the machine ignoring *demokratiuppdraget* twice) was partly an artifact of there being only one static pool at the time, not simulated-AI behavior per se — prior assessments treated it as participant-negotiation data; recode with care in `rehearsal/assessment-round3.md`.
+> 5. **B+7 — consent-delta screen** (optional per plan, implemented): when `session_index >= 2`, the consent screen shows a short "Since your last session" block (what changed in what's recorded) before the accept button, and `session_start.data.consent_delta_shown` records whether it fired. Answers SIM-A-R2's own proposal ("per-session consent deltas... here is what changed in what we record").
+> **Not implemented (deferred per plan):** any change to `AnthropicProvider`, structural similarity, keystroke logging — unchanged from v0.3.
 
 > **Schema v0.3-draft changes (2026-07-17, from Round 2 rehearsal — see rehearsal/assessment-round2.md):**
 > 1. Round 2 FALSIFIED the auto-detector: a skeleton-preserving rework scored similarity 0.019 (word overlap ~0) and was mis-coded `ai_text_removed` — the very dispute v0.2 tried to settle. Fix: below the confident-modification band (sim < 0.6) the instrument no longer guesses transform-vs-remove; it asks the participant `provenance_self_report` (kept: structure / ideas / phrases / nothing). Their answer is the record; raw similarity is still logged for recoding. Above 0.6 it still auto-logs `ai_text_modified_post_acceptance` (clear light edit, no interruption). This makes the trace obey the study's own epistemology: traces never speak alone.
@@ -34,7 +42,7 @@ A purpose-built co-creation environment in which teacher educators produce real 
 
 Envelope (every event): `{ event_id, session_id, seq, at, type, data }` — `seq` is a session-monotonic integer (process mining needs total order; wall-clock alone is not safe), `at` is ISO-8601.
 
-Session context (in `session_start.data`): `schema_version`, `app_version`, `participant_code` (pseudonymous — never a name), `provider {name, model, version}` (model churn rule: the model is a documented material condition), `consent_ack`.
+Session context (in `session_start.data`): `schema_version`, `app_version`, `participant_code` (pseudonymous — never a name), `provider {name, model, version}` (model churn rule: the model is a documented material condition), `consent_ack`, `session_index` (v0.4-draft: trajectory covariate, default 1), `subject_area` (v0.4-draft: optional, participant-entered, `null` if blank), `consent_delta_shown` (v0.4-draft: whether the B+7 returning-participant screen fired).
 
 | Event type | Key data fields | Construct it serves |
 |---|---|---|
@@ -74,7 +82,7 @@ Mechanically: accepted AI text is tracked by substring/similarity against its se
 
 ## 5. Simulated provider
 
-`SuggestionProvider` interface (`name/model/version` + `getSuggestions()`); demo ships `SimulatedProvider` — curated, pedagogically-plausible suggestion pools per section kind (objectives / activities / assessment / materials / generic), light prompt-keyword echo, ~600ms artificial latency, 3 suggestions per request. A real `AnthropicProvider` is an adapter drop-in later; its model choice is a GDPR decision before a capability decision (Research Plan v2 §6).
+`SuggestionProvider` interface (`name/model/version` + `getSuggestions()`); demo ships `SimulatedProvider` — curated, pedagogically-plausible suggestion pools per section kind (objectives / activities / assessment / materials / generic), light prompt-keyword echo, ~600ms artificial latency, 3 suggestions per request. **v0.4-draft (B+1):** pools are now subject-variant — `subjectAreaKey()` selects a mathematics-didactics pool (`MATH_POOLS`) when `subject_area` matches, generic pool otherwise; a simple keyed lookup, not a template system. A real `AnthropicProvider` is an adapter drop-in later; its model choice is a GDPR decision before a capability decision (Research Plan v2 §6).
 
 ## 6. References
 
