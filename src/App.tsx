@@ -562,6 +562,11 @@ function AIPanel({
     setRejecting(null)
     setRejectTag(null)
     setRejectText('')
+    // Round-3 rehearsal finding (SIM-D): the prompt box never cleared after
+    // submission, so a second request could land mid-splice inside leftover
+    // text — prompt_text in the trace then no longer matches what the
+    // participant meant to ask, a data-integrity bug, not cosmetic.
+    setPrompt('')
     setBusy(false)
   }
 

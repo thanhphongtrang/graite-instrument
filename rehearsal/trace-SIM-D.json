@@ -1,0 +1,343 @@
+{
+  "schema_version": "0.4-draft",
+  "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+  "exported_at": "2026-07-18T07:50:00.000Z",
+  "events": [
+    {
+      "event_id": "95f77ed1-b671-436c-89d2-01603635a2d2",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 1,
+      "at": "2026-07-18T07:27:02.639Z",
+      "type": "session_start",
+      "data": {
+        "schema_version": "0.4-draft",
+        "app_version": "0.4.0-boundary-object",
+        "participant_code": "DEMO-01",
+        "provider": { "name": "simulated", "model": "scripted-pool", "version": "0.2" },
+        "consent_ack": true,
+        "session_index": 1,
+        "subject_area": "mathematics didactics",
+        "consent_delta_shown": false
+      }
+    },
+    {
+      "event_id": "6a1767ac-6fbd-42d1-9237-40a007c91be4",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 2,
+      "at": "2026-07-18T07:27:28.027Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "b5c28738-3b8b-4ceb-9a12-a91249a1be74",
+        "request_index": 1,
+        "prompt_text": "I want a hands-on activity where student teachers feed a proof problem to an AI tutor, get a worked solution back, and then have to hunt for a subtle logical gap in it before we discuss what that means for how they'd use these tools with their own pupils.",
+        "target_section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75",
+        "chars": 255
+      }
+    },
+    {
+      "event_id": "fa1e167f-72c5-4694-9853-ba3c5e49e208",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 3,
+      "at": "2026-07-18T07:27:28.630Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "b5c28738-3b8b-4ceb-9a12-a91249a1be74",
+        "request_index": 1,
+        "suggestions": [
+          {
+            "suggestion_id": "6475f0c8-095d-4199-9b87-d5180d87062d",
+            "content": "Error-hunt (20 min): pairs prompt an AI tool for a worked solution to a problem with a known common misconception baked in, then must find where the AI silently \"fixed\" or reproduced the misconception, and defend their finding.",
+            "note": "Responding to: \"I want a hands-on activity where student teachers feed a proof problem to an AI tutor, get a worked solution back, and t\""
+          },
+          {
+            "suggestion_id": "24b1598e-6bd9-4b2c-be4f-2bffb5a4b98c",
+            "content": "Fishbowl discussion (30 min): half the group observes while the other half debates \"if an AI can generate a valid proof, what is left for the pupil to understand?\" — grounded in a concrete algebra or geometry example.",
+            "note": null
+          },
+          {
+            "suggestion_id": "e303ad6c-b191-440a-8c47-3d434194c0dd",
+            "content": "Representation exercise (25 min): give students an AI-generated explanation of a concept using only one representation (e.g. symbolic). Task: identify which representations (graphical, tabular, verbal) are missing and why that matters mathematically.",
+            "note": null
+          }
+        ],
+        "model": "simulated/scripted-pool@0.2",
+        "latency_ms": 603
+      }
+    },
+    {
+      "event_id": "54b618d4-434d-4527-ad76-9cddaa5f701d",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 4,
+      "at": "2026-07-18T07:27:48.818Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "6475f0c8-095d-4199-9b87-d5180d87062d",
+        "request_id": "b5c28738-3b8b-4ceb-9a12-a91249a1be74",
+        "section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75"
+      }
+    },
+    {
+      "event_id": "8221844c-8be9-4775-a7b9-c34cbabe9285",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 5,
+      "at": "2026-07-18T07:27:48.818Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 1,
+        "sections": [
+          { "id": "8fe31ff0-2cb4-4b80-b3eb-f89523be05a9", "title": "Overview & rationale", "content": "" },
+          { "id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa", "title": "Learning objectives", "content": "" },
+          { "id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75", "title": "Activities", "content": "Error-hunt (20 min): pairs prompt an AI tool for a worked solution to a problem with a known common misconception baked in, then must find where the AI silently \"fixed\" or reproduced the misconception, and defend their finding." },
+          { "id": "0e571dfe-898e-40ab-815a-955f622088e2", "title": "Assessment", "content": "" },
+          { "id": "68eb5186-1194-4596-85ea-1d3165503700", "title": "Materials & readings", "content": "" }
+        ]
+      }
+    },
+    {
+      "event_id": "75fc9819-e2cb-480d-987a-62dd293b9442",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 6,
+      "at": "2026-07-18T07:28:12.061Z",
+      "type": "suggestion_rejected",
+      "data": {
+        "suggestion_id": "24b1598e-6bd9-4b2c-be4f-2bffb5a4b98c",
+        "request_id": "b5c28738-3b8b-4ceb-9a12-a91249a1be74",
+        "reason_tag": "Too much preparation or time",
+        "reason_text": "Already have my error-hunt activity for this slot, and a 30-min fishbowl on top would blow the seminar's time budget. Good discussion question though, might reuse it as a follow-up prompt another week."
+      }
+    },
+    {
+      "event_id": "4b62b923-baef-4d49-b338-3635f059d1ce",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 7,
+      "at": "2026-07-18T07:28:42.468Z",
+      "type": "suggestion_edited_then_inserted",
+      "data": {
+        "suggestion_id": "e303ad6c-b191-440a-8c47-3d434194c0dd",
+        "section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75",
+        "original": "Representation exercise (25 min): give students an AI-generated explanation of a concept using only one representation (e.g. symbolic). Task: identify which representations (graphical, tabular, verbal) are missing and why that matters mathematically.",
+        "edited": "Representation exercise (25 min): give students an AI-generated explanaRepresentation exercise (15 min, shortened to fit): give students an AI-generated explanation of derivative-as-rate-of-change using only symbolic notation. Task: name which representations (graphical, tabular, verbal-contextual) are missing and why a pupil who only saw this AI output would be worse off mathematically than one who saw all four.tion of a concept using only one representation (e.g. symbolic). Task: identify which representations (graphical, tabular, verbal) are missing and why that matters mathematically.",
+        "similarity": 0.569
+      }
+    },
+    {
+      "event_id": "d8c493ff-db70-41c1-a7d0-87c44dc72649",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 8,
+      "at": "2026-07-18T07:28:42.468Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 2,
+        "sections": [
+          { "id": "8fe31ff0-2cb4-4b80-b3eb-f89523be05a9", "title": "Overview & rationale", "content": "" },
+          { "id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa", "title": "Learning objectives", "content": "" },
+          { "id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75", "title": "Activities", "content": "Error-hunt (20 min): pairs prompt an AI tool for a worked solution to a problem with a known common misconception baked in, then must find where the AI silently \"fixed\" or reproduced the misconception, and defend their finding.\n\nRepresentation exercise (25 min): give students an AI-generated explanaRepresentation exercise (15 min, shortened to fit): give students an AI-generated explanation of derivative-as-rate-of-change using only symbolic notation. Task: name which representations (graphical, tabular, verbal-contextual) are missing and why a pupil who only saw this AI output would be worse off mathematically than one who saw all four.tion of a concept using only one representation (e.g. symbolic). Task: identify which representations (graphical, tabular, verbal) are missing and why that matters mathematically." },
+          { "id": "0e571dfe-898e-40ab-815a-955f622088e2", "title": "Assessment", "content": "" },
+          { "id": "68eb5186-1194-4596-85ea-1d3165503700", "title": "Materials & readings", "content": "" }
+        ]
+      }
+    },
+    {
+      "event_id": "2dcc4f79-b303-4028-bf1a-d20d8b80310f",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 9,
+      "at": "2026-07-18T07:29:05.150Z",
+      "type": "recall_marker",
+      "data": {
+        "note": "The AI's first pitch (error-hunt) landed almost exactly right on the first try, which honestly surprised me a little. I want to remember to ask myself in the interview whether I accepted it partly just because it matched my prompt's wording so closely, rather than because it's the pedagogically strongest option.",
+        "section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75"
+      }
+    },
+    {
+      "event_id": "b62996ea-566c-434c-9f13-2e3ba8eacb4e",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 10,
+      "at": "2026-07-18T07:44:39.768Z",
+      "type": "manual_edit",
+      "data": {
+        "section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75",
+        "before": "Error-hunt (20 min): pairs prompt an AI tool for a worked solution to a problem with a known common misconception baked in, then must find where the AI silently \"fixed\" or reproduced the misconception, and defend their finding.\n\nRepresentation exercise (25 min): give students an AI-generated explanaRepresentation exercise (15 min, shortened to fit): give students an AI-generated explanation of derivative-as-rate-of-change using only symbolic notation. Task: name which representations (graphical, tabular, verbal-contextual) are missing and why a pupil who only saw this AI output would be worse off mathematically than one who saw all four.tion of a concept using only one representation (e.g. symbolic). Task: identify which representations (graphical, tabular, verbal) are missing and why that matters mathematically.",
+        "after": "In pairs, students give an AI tutor a proof problem we've picked in advance because we know a classic misconception that trips pupils up on it. They read the AI's worked solution closely and have to decide, together, whether the AI reproduced that misconception, quietly patched over it without explaining, or actually handled it well — and they need to be ready to point to the exact line where it happens and argue their case to another pair.\n\nAs a shorter add-on if time allows, show the class an AI explanation of derivative-as-rate-of-change that only uses symbolic notation. Ask them which other representations a pupil would need — a graph, a table, a real-world description — before they could say they actually understood it, not just followed the algebra."
+      }
+    },
+    {
+      "event_id": "056a2323-8882-4af6-8c18-c393ef5affca",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 11,
+      "at": "2026-07-18T07:44:39.769Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 3,
+        "sections": [
+          { "id": "8fe31ff0-2cb4-4b80-b3eb-f89523be05a9", "title": "Overview & rationale", "content": "" },
+          { "id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa", "title": "Learning objectives", "content": "" },
+          { "id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75", "title": "Activities", "content": "In pairs, students give an AI tutor a proof problem we've picked in advance because we know a classic misconception that trips pupils up on it. They read the AI's worked solution closely and have to decide, together, whether the AI reproduced that misconception, quietly patched over it without explaining, or actually handled it well — and they need to be ready to point to the exact line where it happens and argue their case to another pair.\n\nAs a shorter add-on if time allows, show the class an AI explanation of derivative-as-rate-of-change that only uses symbolic notation. Ask them which other representations a pupil would need — a graph, a table, a real-world description — before they could say they actually understood it, not just followed the algebra." },
+          { "id": "0e571dfe-898e-40ab-815a-955f622088e2", "title": "Assessment", "content": "" },
+          { "id": "68eb5186-1194-4596-85ea-1d3165503700", "title": "Materials & readings", "content": "" }
+        ]
+      }
+    },
+    {
+      "event_id": "68696201-990c-4188-8a6e-482cdb2e32a2",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 12,
+      "at": "2026-07-18T07:45:04.795Z",
+      "type": "prompt_submitted",
+      "data": {
+        "request_id": "c993d0b8-7fc5-4fe0-b8d5-7da4d292f7a2",
+        "request_index": 2,
+        "prompt_text": "I want a hands-on activity where student teachers feed a proof problem to an AI tutor, get a worked solution back, and then have to hunt for a subtle logical gap in it before we discuss what that means for how they'd use these toHelp me phrase 3-4 learning objectives for this seminar that go beyond \"can use AI tools\" — I want something that names the critical/evaluative stance I actually care about, pitched at the level of a teacher education course, not a coding bootcamp.ols with their own pupils.",
+        "target_section_id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa",
+        "chars": 503
+      }
+    },
+    {
+      "event_id": "9ab4a536-8063-458d-92b9-a055609c962e",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 13,
+      "at": "2026-07-18T07:45:05.412Z",
+      "type": "suggestions_shown",
+      "data": {
+        "request_id": "c993d0b8-7fc5-4fe0-b8d5-7da4d292f7a2",
+        "request_index": 2,
+        "suggestions": [
+          {
+            "suggestion_id": "e17391b2-7a6e-47b3-8ea7-5534bdd8c262",
+            "content": "Student teachers can critically evaluate an AI-generated proof sketch or worked solution for mathematical validity, not just plausibility — distinguishing \"looks right\" from \"is right\".",
+            "note": "Responding to: \"I want a hands-on activity where student teachers feed a proof problem to an AI tutor, get a worked solution back, and t\""
+          },
+          {
+            "suggestion_id": "01b5dd48-8d1e-41d0-8d3e-2a17ed71717c",
+            "content": "Student teachers can articulate where an AI tutor's step-by-step solution obscures a pupil's own misconception, using examples from their own strand (algebra, geometry, statistics).",
+            "note": null
+          },
+          {
+            "suggestion_id": "8d28f906-985e-47c3-ae62-06557417d3bf",
+            "content": "Student teachers can design a task in which pupils compare an AI-generated solution method with their own, and identify which mathematical practices (justifying, generalizing, representing) the AI path skips.",
+            "note": null
+          }
+        ],
+        "model": "simulated/scripted-pool@0.2",
+        "latency_ms": 617
+      }
+    },
+    {
+      "event_id": "67f6b55c-2820-4b55-8fec-d4e1f4487f70",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 14,
+      "at": "2026-07-18T07:45:28.002Z",
+      "type": "provenance_self_report",
+      "data": {
+        "suggestion_id": "6475f0c8-095d-4199-9b87-d5180d87062d",
+        "section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75",
+        "similarity": 0.036,
+        "kept": "ideas"
+      }
+    },
+    {
+      "event_id": "60a49dfa-9b36-426d-ad76-99377c97b97a",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 15,
+      "at": "2026-07-18T07:46:03.981Z",
+      "type": "provenance_self_report",
+      "data": {
+        "suggestion_id": "e303ad6c-b191-440a-8c47-3d434194c0dd",
+        "section_id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75",
+        "similarity": 0.039,
+        "kept": "ideas"
+      }
+    },
+    {
+      "event_id": "36b9bb23-cb9f-46d4-8540-216029a9cfc4",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 16,
+      "at": "2026-07-18T07:46:23.736Z",
+      "type": "suggestion_accepted",
+      "data": {
+        "suggestion_id": "e17391b2-7a6e-47b3-8ea7-5534bdd8c262",
+        "request_id": "c993d0b8-7fc5-4fe0-b8d5-7da4d292f7a2",
+        "section_id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa"
+      }
+    },
+    {
+      "event_id": "5242ee82-9b55-45c6-8777-7b8633abb3be",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 17,
+      "at": "2026-07-18T07:46:23.736Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 4,
+        "sections": [
+          { "id": "8fe31ff0-2cb4-4b80-b3eb-f89523be05a9", "title": "Overview & rationale", "content": "" },
+          { "id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa", "title": "Learning objectives", "content": "Student teachers can critically evaluate an AI-generated proof sketch or worked solution for mathematical validity, not just plausibility — distinguishing \"looks right\" from \"is right\"." },
+          { "id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75", "title": "Activities", "content": "In pairs, students give an AI tutor a proof problem we've picked in advance because we know a classic misconception that trips pupils up on it. They read the AI's worked solution closely and have to decide, together, whether the AI reproduced that misconception, quietly patched over it without explaining, or actually handled it well — and they need to be ready to point to the exact line where it happens and argue their case to another pair.\n\nAs a shorter add-on if time allows, show the class an AI explanation of derivative-as-rate-of-change that only uses symbolic notation. Ask them which other representations a pupil would need — a graph, a table, a real-world description — before they could say they actually understood it, not just followed the algebra." },
+          { "id": "0e571dfe-898e-40ab-815a-955f622088e2", "title": "Assessment", "content": "" },
+          { "id": "68eb5186-1194-4596-85ea-1d3165503700", "title": "Materials & readings", "content": "" }
+        ]
+      }
+    },
+    {
+      "event_id": "abe8c7be-9ade-40ee-bd13-fedfe800ea23",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 18,
+      "at": "2026-07-18T07:46:49.029Z",
+      "type": "suggestion_rejected",
+      "data": {
+        "suggestion_id": "01b5dd48-8d1e-41d0-8d3e-2a17ed71717c",
+        "request_id": "c993d0b8-7fc5-4fe0-b8d5-7da4d292f7a2",
+        "reason_tag": "Other",
+        "reason_text": "This basically restates the objective I just accepted, just from the activity side instead of the assessment side. Keeping both would make the objectives list read as padded rather than sharp."
+      }
+    },
+    {
+      "event_id": "b2e8ff91-89c2-4570-98c4-25d0c97469b6",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 19,
+      "at": "2026-07-18T07:47:24.563Z",
+      "type": "suggestion_edited_then_inserted",
+      "data": {
+        "suggestion_id": "8d28f906-985e-47c3-ae62-06557417d3bf",
+        "section_id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa",
+        "original": "Student teachers can design a task in which pupils compare an AI-generated solution method with their own, and identify which mathematical practices (justifying, generalizing, representing) the AI path skips.",
+        "edited": "Student teachers can design a task where pupils weigh an AI-generated solution against their own and name, in their own words, which mathematical practice — justifying, generalizing, or choosing a representation — the AI's path quietly skipped.",
+        "similarity": 0.25
+      }
+    },
+    {
+      "event_id": "58203437-fa83-40cc-b3e0-f16f7a54f256",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 20,
+      "at": "2026-07-18T07:47:24.564Z",
+      "type": "artifact_snapshot",
+      "data": {
+        "version": 5,
+        "sections": [
+          { "id": "8fe31ff0-2cb4-4b80-b3eb-f89523be05a9", "title": "Overview & rationale", "content": "" },
+          { "id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa", "title": "Learning objectives", "content": "Student teachers can critically evaluate an AI-generated proof sketch or worked solution for mathematical validity, not just plausibility — distinguishing \"looks right\" from \"is right\".\n\nStudent teachers can design a task where pupils weigh an AI-generated solution against their own and name, in their own words, which mathematical practice — justifying, generalizing, or choosing a representation — the AI's path quietly skipped." },
+          { "id": "5d9d9bb3-2b35-4384-96f6-08efb72d6d75", "title": "Activities", "content": "In pairs, students give an AI tutor a proof problem we've picked in advance because we know a classic misconception that trips pupils up on it. They read the AI's worked solution closely and have to decide, together, whether the AI reproduced that misconception, quietly patched over it without explaining, or actually handled it well — and they need to be ready to point to the exact line where it happens and argue their case to another pair.\n\nAs a shorter add-on if time allows, show the class an AI explanation of derivative-as-rate-of-change that only uses symbolic notation. Ask them which other representations a pupil would need — a graph, a table, a real-world description — before they could say they actually understood it, not just followed the algebra." },
+          { "id": "0e571dfe-898e-40ab-815a-955f622088e2", "title": "Assessment", "content": "" },
+          { "id": "68eb5186-1194-4596-85ea-1d3165503700", "title": "Materials & readings", "content": "" }
+        ]
+      }
+    },
+    {
+      "event_id": "a393ab90-1677-42e2-92e2-411d17ea0897",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 21,
+      "at": "2026-07-18T07:48:12.817Z",
+      "type": "recall_marker",
+      "data": {
+        "note": "Right after I moved on to this section, the tool popped up twice asking me what I'd kept of the AI's wording in my Activities rewrite. Fair question, and I answered honestly, but I want to remember in the interview that it asked me TWICE for what felt like one continuous act of rewriting — worth asking whether that's a bug or by design.",
+        "section_id": "031215aa-5e7f-432c-bd16-4557a0d8d0aa"
+      }
+    },
+    {
+      "event_id": "0ba327e0-1262-46ac-8936-a528eccf544a",
+      "session_id": "7d03a0a1-647f-4e2a-84e8-41e6c715cb1f",
+      "seq": 22,
+      "at": "2026-07-18T07:48:19.182Z",
+      "type": "session_end",
+      "data": { "ended_by": "participant", "total_events": 22 }
+    }
+  ]
+}
